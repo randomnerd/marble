@@ -26,7 +26,7 @@ export const createServer = (config: CreateServerConfig): Server => {
 
   if (event$) {
     const metadata = createEffectMetadata({ ask: lookup(context) });
-    event$(serverEventSubject.pipe(takeWhile(e => !isCloseEvent(e))), server, metadata).subscribe();
+    event$(serverEventSubject.pipe(takeWhile(e => !isCloseEvent(e), true)), server, metadata).subscribe();
   }
 
   return {
